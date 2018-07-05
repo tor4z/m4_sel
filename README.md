@@ -36,7 +36,7 @@ m4_define instead of dnl and define, respectively.
 |divert(n)| 			Changes the output stream to the temporary file number n.|
 |divnum| 			Returns the number of the currently active temporary file.|
 |dnl| 				Deletes text up to a newline character.|
-|dumpdef(`name'[,`name'...])| 	Prints the names and current definitions of the named macros.|
+|dumpdef(\`name'[,\`name'...])| 	Prints the names and current definitions of the named macros.|
 |errprint(str)| 		Prints str to the standard error file.|
 |eval(expr)| 			Evaluates expr as a 32-bit arithmetic expression.|
 |ifdef(`name',arg1,arg2)| 	If macro name is defined, returns arg1; otherwise, returns arg2.|
@@ -57,5 +57,5 @@ m4_define instead of dnl and define, respectively.
 |traceoff(macro_list)| 		Turns off trace for any macro in the list. If macro_list is null, turns off all tracing.|
 |traceon(name)| 		Turns on trace for the named macro. If name is null, turns trace on for all macros.|
 |translit(string,set1,set2)| 	Replaces any characters from set1 that appear in string with the corresponding characters from set2.|
-|undefine(`name')| 		Removes the definition of the named macro.|
+|undefine(\`name')| 		Removes the definition of the named macro.|
 |undivert(n,n[,n...])| 		Appends the contents of the indicated temporary files to the current temporary file.|
