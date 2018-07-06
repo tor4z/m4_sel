@@ -36,7 +36,7 @@ m4_define instead of dnl and define, respectively.
 |divert(n)| 			Changes the output stream to the temporary file number n.|
 |divnum| 			Returns the number of the currently active temporary file.|
 |dnl| 				Deletes text up to a newline character.|
-|dumpdef(\`name'[,\`name'...])| 	Prints the names and current definitions of the named macros.|
+|dumpdef(\`name'[,\`name'...])| Prints the names and current definitions of the named macros.|
 |errprint(str)| 		Prints str to the standard error file.|
 |eval(expr)| 			Evaluates expr as a 32-bit arithmetic expression.|
 |ifdef(`name',arg1,arg2)| 	If macro name is defined, returns arg1; otherwise, returns arg2.|
@@ -59,3 +59,31 @@ m4_define instead of dnl and define, respectively.
 |translit(string,set1,set2)| 	Replaces any characters from set1 that appear in string with the corresponding characters from set2.|
 |undefine(\`name')| 		Removes the definition of the named macro.|
 |undivert(n,n[,n...])| 		Appends the contents of the indicated temporary files to the current temporary file.|
+
+### Arguments to macros
+
+| Argument | Description |
+|----------|-------------|
+| $0       | The name of the macro being expanded |
+| $n       | The nth Argument |
+| $#       | The number of actual arguments in a macro call |
+| $@       | Just like the `$*`, but quotes each argument|
+| $*       | The expansion text to denote all the actual arguments,unquoted, with commas in between.|
+
+The Difference between `$@` and `$*`
+```m4
+define(`echo1', `$*')
+
+define(`echo2', `$@')
+
+define(`foo', `This is macro `foo'.')
+
+echo1(foo)
+This is macro This is macro foo..
+echo1(`foo')
+This is macro foo.
+echo2(foo)
+This is macro foo.
+echo2(`foo')
+foo
+```
