@@ -60,6 +60,21 @@ m4_define instead of dnl and define, respectively.
 |undefine(\`name')| 		Removes the definition of the named macro.|
 |undivert(n,n[,n...])| 		Appends the contents of the indicated temporary files to the current temporary file.|
 
+`ifelse` multibranch
+
+* ifelse (comment)
+* ifelse (string-1, string-2, equal, [not-equal])
+* ifelse (string-1, string-2, equal-1, string-3, string-4, equal-2, ..., [not-equal])
+
+```m4
+ifelse(`foo', `foo', `1', `gnu', `gnu', `2', `3')
+1
+ifelse(`foo', `bar', `1', 'gnu', `gants', `2', `3')
+3
+ifelse(`foo', `bar', `1', `gnu', `gnu', `2', `3')
+2
+```
+
 ### Arguments to macros
 
 | Argument | Description |
@@ -86,4 +101,28 @@ echo2(foo)
 This is macro foo.
 echo2(`foo')
 foo
+```
+
+Nested quote
+```
+define(‘foo’, ‘no nested quote: $1’)
+
+foo(‘arg’)
+no nested quote: arg
+define(‘foo’, ‘nested quote around $: ‘$’1’)
+
+foo(‘arg’)
+nested quote around $: $1
+define(‘foo’, ‘nested empty quote after $: $‘’1’)
+
+foo(‘arg’)
+nested empty quote after $: $1
+define(‘foo’, ‘nested quote around next character: $‘1’’)
+
+foo(‘arg’)
+nested quote around next character: $1
+define(‘foo’, ‘nested quote around both: ‘$1’’)
+
+foo(‘arg’)
+nested quote around both: arg
 ```
