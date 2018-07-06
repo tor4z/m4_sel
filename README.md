@@ -83,7 +83,8 @@ ifelse(`foo', `bar', `1', `gnu', `gnu', `2', `3')
 | $n       | The nth Argument |
 | $#       | The number of actual arguments in a macro call |
 | $@       | Just like the `$*`, but quotes each argument|
-| $*       | The expansion text to denote all the actual arguments,unquoted, with commas in between.|
+| $*       | The expansion text to denote all the actual arguments,unquoted,
+  	     with commas in between.|
 
 The Difference between `$@` and `$*`
 ```m4
