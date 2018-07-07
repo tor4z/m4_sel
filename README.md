@@ -126,3 +126,16 @@ define(‘foo’, ‘nested quote around both: ‘$1’’)
 foo(‘arg’)
 nested quote around both: arg
 ```
+
+
+### divert
+
+An empty quoted string (`’) is another way to separate the divert
+and dnl macro calls.
+
+```
+divert(-1)
+Now we run define(`i’, incr(i)):
+define(`i’, incr(i))
+divert`’dnl
+```
